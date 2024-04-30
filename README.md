@@ -2,8 +2,9 @@
 
 This repository provides all the data from my master thesis "Enhanced GA for the Energy-efficient FJSP with transportation times"
 
-Brandimarte's dataset in Excel 
-Instances used in my thesis in Excel
+MyInstance folder contains information about
+>Brandimarte's dataset
+>Instances used in my Thesis
 
 NSGA-II algorithm
 VNS-NSGA-II algorithm 
