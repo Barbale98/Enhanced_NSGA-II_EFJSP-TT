@@ -20,7 +20,7 @@ old_time = time.time()
 total_Operation = tot_number_operations
 # Parameters
 Pop_size = 100
-generation_num = 200
+generation_num = 100
 pm = 0.2  # Mutation probability
 
 
@@ -991,7 +991,7 @@ for gennum in range(generation_num):
             son_pop_total.append(list_pop)
 
     # Remove identical schedules
-    if gen in range(49, generation_num, 50):
+    if gen in range(24, generation_num, 25):
         duplicates = set()
         # Compare every pair of selected indexes
         for i, a1 in enumerate(select_index):
@@ -1007,13 +1007,13 @@ for gennum in range(generation_num):
             Pop_list.append(Pop_total[a])
 
     # Select parents for Variable Neighbourhood Search every 5 generations
-    if gen in range(19, generation_num, 20):
+    if gen in range(19, generation_num, 10):
 
         pareto_individuals = random.sample(range(min(num_pareto, 100)), k=min(num_pareto, 2))
         VNS_individuals = copy.deepcopy(pareto_individuals)
         Other_individuals = random.sample(
             [ind for ind in range(len(Pop_matrix) - 1) if ind not in pareto_individuals],
-            k=(20 - len(pareto_individuals)))
+            k=(25 - len(pareto_individuals)))
         VNS_individuals.extend(Other_individuals)
 
         for a in VNS_individuals:
@@ -1131,10 +1131,10 @@ for gennum in range(generation_num):
                                                                    energy_total_else_local)
                 if min(energy_total_else_local) < min_energy:
                     min_energy = min(energy_total_else_local)
-                    iteration_energy.append([time.time() - initial_t, min_energy])
+                iteration_energy.append([time.time() - initial_t, min_energy])
                 if min(makespan_total_else_local) < min_makespan:
                     min_makespan = min(makespan_total_else_local)
-                    iteration.append([time.time() - initial_t, min_makespan])
+                iteration.append([time.time() - initial_t, min_makespan])
 
                 # Local selection
                 it = 0
